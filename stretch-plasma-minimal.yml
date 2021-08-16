@@ -157,11 +157,6 @@
       package:
         name: plasma-pa
         state: present
-    - name: Install sni-qt
-      become: yes
-      package:
-        name: sni-qt
-        state: present
     - name: Install systemsettings
       become: yes
       package:
