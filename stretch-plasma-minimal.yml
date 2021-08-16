@@ -51,6 +51,10 @@
       package:
         name: mesa-utils
         state: present
+    - name: Install gnupg
+      package:
+        name: gnupg
+        state: present
     - name: Install apt-transport-https
       package:
         name: apt-transport-https
