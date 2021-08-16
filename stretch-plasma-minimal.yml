@@ -162,11 +162,6 @@
       package:
         name: systemsettings
         state: present
-    - name: Install user-manager
-      become: yes
-      package:
-        name: user-manager
-        state: present
     - name: Install ntfs-3g
       become: yes
       package:
