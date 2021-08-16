@@ -187,11 +187,6 @@
       package:
         name: plasma-nm
         state: present
-    - name: Install kde-style-breeze-qt4
-      become: yes
-      package:
-        name: kde-style-breeze-qt4
-        state: present
     - name: Install kio-extras
       become: yes
       package:
