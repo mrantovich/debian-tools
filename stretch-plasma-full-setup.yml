@@ -52,7 +52,7 @@
         state: present
     - name: Add notesalexp repo
       apt_repository:
-        repo: deb http://notesalexp.org/debian/bullseye/ bullseye main
+        repo: deb https://notesalexp.org/debian/bullseye/ bullseye main
         filename: notesalexp
         state: present
         update_cache: no
