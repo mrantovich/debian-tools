@@ -42,9 +42,13 @@
       package:
         name: mesa-utils
         state: present
+    - name: Install apt-transport-https
+      package:
+        name: apt-transport-https
+        state: present
     - name: Add notesalexp repo
       apt_repository:
-        repo: deb http://notesalexp.org/debian/stretch/ stretch main
+        repo: deb http://notesalexp.org/debian/bulseye/ bullseye main
         filename: notesalexp
         state: present
         update_cache: no
