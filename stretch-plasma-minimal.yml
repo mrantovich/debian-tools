@@ -228,10 +228,6 @@
       copy:
         src: files/interfaces
         dest: /etc/network/interfaces
-    - name: Copy NetworkManager config
-      copy:
-        src: files/NetworkManager.conf
-        dest: /etc/NetworkManager/NetworkManager.conf
     - name: Be sure that NetworkManager is enabled
       systemd:
         name: NetworkManager
