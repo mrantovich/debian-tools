@@ -1,0 +1,338 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Copy apt.conf
+      copy:
+        src: files/apt.conf
+        dest: /etc/apt/apt.conf
+    - name: Install Xorg server
+      package: 
+        name: xserver-xorg-core
+        state: present
+    - name: Install Xorg video driver, for Intel in this case
+      package:
+        name: xserver-xorg-video-intel
+        state: present
+    - name: Install Xorg evdev input driver
+      package:
+        name: xserver-xorg-input-evdev
+        state: present
+    - name: Install Xorg utils
+      package: 
+        name: x11-xserver-utils
+        state: present
+    - name: Install Xorg keyboard utils
+      package:
+        name: x11-xkb-utils
+        state: present
+    - name: Install Xorg utils
+      package:
+        name: x11-utils
+        state: present
+    - name: Install xinit
+      package:
+        name: xinit
+        state: present
+    - name: Install packages for OpenGL support
+      package:
+        name: libgl1-mesa-dri
+        state: present
+    - name: Install Mesa utils
+      package:
+        name: mesa-utils
+        state: present
+    - name: Add notesalexp repo
+      apt_repository:
+        repo: deb http://notesalexp.org/debian/stretch/ stretch main
+        filename: notesalexp
+        state: present
+        update_cache: no
+    - name: Add keyring for notesalexp repo
+      apt_key:
+        url: https://notesalexp.org/debian/alexp_key.asc
+        state: present
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+        update_cache: yes
+    - name: Install kde-plasma-desktop
+      package:
+        name: kde-plasma-desktop
+        state: present
+    - name: Install aptitude
+      package:
+        name: aptitude
+        state: present
+    - name: Install phonon4qt5-backend-gstreamer
+      package:
+        name: phonon4qt5-backend-gstreamer
+        state: present
+    - name: Remove phonon4qt5-backend-vlc
+      package:
+        name: phonon4qt5-backend-vlc
+        state: absent
+    - name: Install kwin-x11
+      package:
+        name: kwin-x11
+        state: present
+    - name: Install konsole
+      package:
+        name: konsole
+        state: present
+    - name: Remove xterm
+      package:
+        name: xterm
+        state: absent
+    - name: Install sddm
+      package:
+        name: sddm
+        state: present
+    - name: Install hunspell-ru
+      package:
+        name: hunspell-ru
+        state: present
+    - name: Install gtk3-engines-breeze
+      package:
+        name: gtk3-engines-breeze
+        state: present
+    - name: Install kde-config-gtk-style
+      package:
+        name: kde-config-gtk-style
+        state: present
+    - name: Install khelpcenter
+      package:
+        name: khelpcenter
+        state: present
+    - name: Install khotkeys
+      package:
+        name: khotkeys
+        state: present
+    - name: Install kinfocenter
+      package:
+        name: kinfocenter
+        state: present
+    - name: Install kmenuedit
+      package:
+        name: kmenuedit
+        state: present
+    - name: Install ksysguard
+      package:
+        name: ksysguard
+        state: present
+    - name: Install plasma-pa
+      package:
+        name: plasma-pa
+        state: present
+    - name: Install sni-qt
+      package:
+        name: sni-qt
+        state: present
+    - name: Install systemsettings
+      package:
+        name: systemsettings
+        state: present
+    - name: Install user-manager
+      package:
+        name: user-manager
+        state: present
+    - name: Install ntfs-3g
+      package:
+        name: ntfs-3g
+        state: present
+    - name: Install dosfstools
+      package:
+        name: dosfstools
+        state: present
+    - name: Install muon
+      package:
+        name: muon
+        state: present
+    - name: Install plasma-discover
+      package:
+        name: plasma-discover
+        state: present
+    - name: Install plasma-nm
+      package:
+        name: plasma-nm
+        state: present
+    - name: Install kde-style-breeze-qt4
+      package:
+        name: kde-style-breeze-qt4
+        state: present
+    - name: Install kio-extras
+      package:
+        name: kio-extras
+        state: present
+    - name: Install kde-config-sddm
+      package:
+        name: kde-config-sddm
+        state: present
+    - name: Install kde-config-systemd
+      package:
+        name: kde-config-systemd
+        state: present
+    - name: Install kscreen
+      package:
+        name: kscreen
+        state: present
+    - name: Install sddm-theme-debian-breeze
+      package:
+        name: sddm-theme-debian-breeze
+        state: present
+    - name: Make our desktop looks better
+      package:
+        name: desktop-base
+        state: present
+    - name: Install mpv
+      package:
+        name: mpv
+        state: present
+    - name: Install krusader
+      package:
+        name: krusader
+        state: present
+    - name: Install goldendict
+      package:
+        name: goldendict
+        state: present
+    - name: Install stellarium
+      package:
+        name: stellarium
+        state: present
+    - name: Install okular
+      package:
+        name: okular
+        state: present
+    - name: Install okular-extra-backends
+      package:
+        name: okular-extra-backends
+        state: present
+    - name: Install gimp
+      package:
+        name: gimp
+        state: present
+    - name: Install gwenview
+      package:
+        name: gwenview
+        state: present
+    - name: Install ktorrent
+      package:
+        name: ktorrent
+        state: present
+    - name: Install chromium
+      package:
+        name: chromium
+        state: present
+    - name: Install fbreader
+      package:
+        name: fbreader
+        state: present
+    - name: Install mc
+      package:
+        name: mc
+        state: present
+    - name: Install partitionmanager
+      package:
+        name: partitionmanager
+        state: present
+    - name: Install htop
+      package:
+        name: htop
+        state: present
+    - name: Install pydf
+      package:
+        name: pydf
+        state: present
+    - name: Install krename
+      package:
+        name: krename
+        state: present
+    - name: Install bzip2
+      package:
+        name: bzip2
+        state: present
+    - name: Install p7zip-full
+      package:
+        name: p7zip-full
+        state: present
+    - name: Install unrar
+      package:
+        name: unrar
+        state: present
+    - name: Install kde-spectacle
+      package:
+        name: kde-spectacle
+        state: present
+    - name: Install ark
+      package:
+        name: ark
+        state: present
+    - name: Install kteatime
+      package:
+        name: kteatime
+        state: present
+    - name: Install vim
+      package:
+        name: vim
+        state: present
+    - name: Install gdebi-core
+      package:
+        name: gdebi-core
+        state: present
+    - name: Install clementine
+      package:
+        name: clementine
+        state: present
+    - name: Install libreoffice
+      package:
+        name: libreoffice
+        default_release: stretch-backports
+        state: present
+    - name: Install libreoffice kde integration
+      package:
+        name: libreoffice-kde
+        default_release: stretch-backports
+        state: present
+    - name: Install libreoffice-style-breeze
+      package:
+        name: libreoffice-style-breeze
+        default_release: stretch-backports
+        state: present
+    - name: Install dnsqmasq
+      package:
+        name: dnsmasq
+        state: present
+    - name: Install kernel from backports
+      package:
+        name: linux-image-amd64
+        default_release: stretch-backports
+        state: latest
+    - name: Install firmware-linux-free
+      package:
+        name: firmware-linux-free
+        state: present
+    - name: Install firmware-linux-nonfree
+      package:
+        name: firmware-linux-nonfree
+        state: present
+    - name: Install intel-microcode
+      package:
+        name: intel-microcode
+        state: present
+    - name: Install firmware-misc-nonfree
+      package:
+        name: firmware-misc-nonfree
+        state: present
+    - name: Allow Network-Manager control the network
+      copy:
+        src: files/interfaces
+        dest: /etc/network/interfaces
+    - name: Copy NetworkManager config
+      copy:
+        src: files/NetworkManager.conf
+        dest: /etc/NetworkManager/NetworkManager.conf
+    - name: Be sure that NetworkManager is enabled
+      systemd:
+        name: NetworkManager
+        enabled: yes

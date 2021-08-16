@@ -1,0 +1,238 @@
+---
+
+- hosts: localhost
+  tasks:
+    - name: Copy apt.conf
+      copy:
+        src: files/apt.conf
+        dest: /etc/apt/apt.conf
+    - name: Install Xorg server
+      become: yes
+      package: 
+        name: xserver-xorg-core
+        state: present
+    - name: Install Xorg video driver, for Intel in this case
+      become: yes
+      package:
+        name: xserver-xorg-video-intel
+        state: present
+    - name: Install Xorg evdev input driver
+      become: yes
+      package:
+        name: xserver-xorg-input-evdev
+        state: present
+    - name: Install Xorg utils
+      become: yes
+      package: 
+        name: x11-xserver-utils
+        state: present
+    - name: Install Xorg keyboard utils
+      become: yes
+      package:
+        name: x11-xkb-utils
+        state: present
+    - name: Install Xorg utils
+      become: yes
+      package:
+        name: x11-utils
+        state: present
+    - name: Install xinit
+      become: yes
+      package:
+        name: xinit
+        state: present
+    - name: Install packages for OpenGL support
+      become: yes
+      package:
+        name: libgl1-mesa-dri
+        state: present
+    - name: Install Mesa utils
+      become: yes
+      package:
+        name: mesa-utils
+        state: present
+    - name: Add notesalexp repo
+      apt_repository:
+        repo: deb http://notesalexp.org/debian/stretch/ stretch main
+        filename: notesalexp
+        state: present
+    - name: Add keyring for notesalexp repo
+      apt_key:
+        url: https://notesalexp.org/debian/alexp_key.asc
+        state: present
+    - name: Update all packages to the latest version
+      apt:
+        upgrade: dist
+        update_cache: yes
+    - name: Install kde-plasma-desktop
+      become: yes
+      package:
+        name: kde-plasma-desktop
+        state: present
+    - name: Install aptitude
+      become: yes
+      package:
+        name: aptitude
+        state: present
+    - name: Install phonon4qt5-backend-gstreamer
+      become: yes
+      package:
+        name: phonon4qt5-backend-gstreamer
+        state: present
+    - name: Remove phonon4qt5-backend-vlc
+      become: yes
+      package:
+        name: phonon4qt5-backend-vlc
+        state: absent
+    - name: Install kwin-x11
+      become: yes
+      package:
+        name: kwin-x11
+        state: present
+    - name: Install konsole
+      become: yes
+      package:
+        name: konsole
+        state: present
+    - name: Remove xterm
+      become: yes
+      package:
+        name: xterm
+        state: absent
+    - name: Install sddm
+      become: yes
+      package:
+        name: sddm
+        state: present
+    - name: Install hunspell-ru
+      become: yes
+      package:
+        name: hunspell-ru
+        state: present
+    - name: Install gtk3-engines-breeze
+      become: yes
+      package:
+        name: gtk3-engines-breeze
+        state: present
+    - name: Install kde-config-gtk-style
+      become: yes
+      package:
+        name: kde-config-gtk-style
+        state: present
+    - name: Install khelpcenter
+      become: yes
+      package:
+        name: khelpcenter
+        state: present
+    - name: Install khotkeys
+      become: yes
+      package:
+        name: khotkeys
+        state: present
+    - name: Install kinfocenter
+      become: yes
+      package:
+        name: kinfocenter
+        state: present
+    - name: Install kmenuedit
+      become: yes
+      package:
+        name: kmenuedit
+        state: present
+    - name: Install ksysguard
+      become: yes
+      package:
+        name: ksysguard
+        state: present
+    - name: Install plasma-pa
+      become: yes
+      package:
+        name: plasma-pa
+        state: present
+    - name: Install sni-qt
+      become: yes
+      package:
+        name: sni-qt
+        state: present
+    - name: Install systemsettings
+      become: yes
+      package:
+        name: systemsettings
+        state: present
+    - name: Install user-manager
+      become: yes
+      package:
+        name: user-manager
+        state: present
+    - name: Install ntfs-3g
+      become: yes
+      package:
+        name: ntfs-3g
+        state: present
+    - name: Install dosfstools
+      become: yes
+      package:
+        name: dosfstools
+        state: present
+    - name: Install muon
+      become: yes
+      package:
+        name: muon
+        state: present
+    - name: Install plasma-discover
+      become: yes
+      package:
+        name: plasma-discover
+        state: present
+    - name: Install plasma-nm
+      become: yes
+      package:
+        name: plasma-nm
+        state: present
+    - name: Install kde-style-breeze-qt4
+      become: yes
+      package:
+        name: kde-style-breeze-qt4
+        state: present
+    - name: Install kio-extras
+      become: yes
+      package:
+        name: kio-extras
+        state: present
+    - name: Install kde-config-sddm
+      become: yes
+      package:
+        name: kde-config-sddm
+        state: present
+    - name: Install kde-config-systemd
+      become: yes
+      package:
+        name: kde-config-systemd
+        state: present
+    - name: Install kscreen
+      become: yes
+      package:
+        name: kscreen
+        state: present
+    - name: Install sddm-theme-debian-breeze
+      become: yes
+      package:
+        name: sddm-theme-debian-breeze
+        state: present
+    - name: Make us desktop look better
+      become: yes
+      package:
+        name: desktop-base
+        state: present
+    - name: Allow Network-Manager control the network
+      copy:
+        src: files/interfaces
+        dest: /etc/network/interfaces
+    - name: Copy NetworkManager config
+      copy:
+        src: files/NetworkManager.conf
+        dest: /etc/NetworkManager/NetworkManager.conf
+    - name: Be sure that NetworkManager is enabled
+      systemd:
+        name: NetworkManager
+        enabled: yes
