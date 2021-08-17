@@ -67,11 +67,8 @@
         state: present
         update_cache: no
     - name: Install deb-multimedia keyring
-      package:
-        name: deb-multimedia-keyring
-        state: present
-        force: yes
-        update_cache: yes
+      ansible.builtin.script:
+        cmd: ./deb-multimedia.sh
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
