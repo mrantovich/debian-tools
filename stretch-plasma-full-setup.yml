@@ -295,7 +295,7 @@
         state: present
     - name: Install libreoffice kde integration
       package:
-        name: libreoffice-kde
+        name: libreoffice-kde5  
         state: present
     - name: Install libreoffice-style-breeze
       package:
