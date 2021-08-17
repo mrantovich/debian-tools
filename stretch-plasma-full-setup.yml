@@ -292,17 +292,17 @@
     - name: Install libreoffice
       package:
         name: libreoffice
-        default_release: stretch-backports
+        default_release: bullseye-backports
         state: present
     - name: Install libreoffice kde integration
       package:
         name: libreoffice-kde
-        default_release: stretch-backports
+        default_release: bullseye-backports
         state: present
     - name: Install libreoffice-style-breeze
       package:
         name: libreoffice-style-breeze
-        default_release: stretch-backports
+        default_release: bullseye-backports
         state: present
     - name: Install dnsqmasq
       package:
@@ -311,7 +311,7 @@
     - name: Install kernel from backports
       package:
         name: linux-image-amd64
-        default_release: stretch-backports
+        default_release: bullseye-backports
         state: latest
     - name: Install firmware-linux-free
       package:
