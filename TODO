@@ -1,2 +1,4 @@
-Remove: packagekit, plasma-discover, ktorrent
-Install: firefox-esr, google-chrome
+Remove: packagekit
+Install: google-chrome
+
+Fill README.md with instructions

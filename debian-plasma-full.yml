@@ -157,10 +157,6 @@
       package:
         name: muon
         state: present
-    - name: Install plasma-discover
-      package:
-        name: plasma-discover
-        state: present
     - name: Install plasma-nm
       package:
         name: plasma-nm
@@ -220,10 +216,6 @@
     - name: Install gwenview
       package:
         name: gwenview
-        state: present
-    - name: Install ktorrent
-      package:
-        name: ktorrent
         state: present
     - name: Install chromium
       package:
@@ -316,6 +308,10 @@
     - name: Install firmware-misc-nonfree
       package:
         name: firmware-misc-nonfree
+        state: present
+    - name: Install firefox-esr
+      package:
+        name: firefox-esr
         state: present
     - name: Allow Network-Manager control the network
       copy:
