@@ -79,6 +79,7 @@
         name: deb-multimedia-keyring
         state: present
         allow_unauthenticated: yes
+        update_cache: yes
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
