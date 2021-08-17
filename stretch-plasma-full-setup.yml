@@ -60,6 +60,17 @@
       apt_key:
         url: https://notesalexp.org/debian/alexp_key.asc
         state: present
+    - name: Add deb-multimedia repo
+      apt_repository:
+        repo: deb https://www.deb-multimedia.org bullseye main non-free
+        filename: deb-multimedia
+        state: present
+        update_cache: no
+    - name: Install deb-multimedia keyring
+      package:
+        name: deb-multimedia-keyring
+        state: present
+        allow_unauthenticated: yes
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
